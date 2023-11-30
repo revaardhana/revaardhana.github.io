@@ -11,6 +11,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
 
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css" />
     <title>My Portofolio | Reva Ardhana</title>
@@ -45,7 +48,7 @@
 
     <!-- Jumbotron -->
     <section class="jumbotron text-center">
-      <img src="img/reva.jpg" alt="Reva Ardhana" width="200" class="rounded-circle img-thumbnail" />
+      <img src="img/reva.jpg" alt="Reva Ardhana" width="200" class="rounded-circle img-thumbnail"/>
       <h1 class="display-5">Reva Ardhana Putra Hermawan</h1>
       <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -60,7 +63,7 @@
 
     <!-- About -->
     <section id="about">
-      <div class="container">
+      <div class="container" data-aos="fade-down" data-aos-duration="1500">
         <div class="row text-center mb-3">
           <div class="col">
             <h2>Profil</h2>
@@ -68,7 +71,7 @@
         </div>
         <div class="row justify-content-center fs-5 text-center">
           <div class="col-md-7">
-            <p>Saya merupakan lulusan dari SMK N 1 Denpasar. Saat ini sedang menempuh pendidikan S1 - Sistem Informasi di Univertas ITB Stikom Bali. Saya memiliki pengalaman bekerja sebagai Admin di PT. Harita, salah satu perusahaan yang bermitra dengan PT. Telom Akses yang bergerak di bidang Telekomunikasi.</p>
+            <p>Saya merupakan lulusan dari SMK N 1 Denpasar. Saat ini sedang menempuh pendidikan S1 - Sistem Informasi di ITB Stikom Bali. Saya memiliki pengalaman bekerja sebagai Admin di PT. Harita, salah satu perusahaan yang bermitra dengan PT. Telom Akses yang bergerak di bidang Telekomunikasi.</p>
           </div>
         </div>
       </div>
@@ -87,31 +90,31 @@
       <div class="container">
         <div class="row text-center mb-3">
           <div class="col">
-            <h2>Picture</h2>
+            <h2>Gallery</h2>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/3.jpg" class="card-img-top" alt="Image 1" />
+            <div class="card" data-aos="flip-left" data-aos-duration="1000">
+              <img src="img/3.jpeg" class="card-img-top" alt="Image 1" />
               <div class="card-body">
-                <p class="card-text" style="text-align: center"><b>Teknisi Indihome</b></p>
+                <p class="card-text" style="text-align: center"><b>Teknisi</b></p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/1.jpg" class="card-img-top" alt="Image 2" />
+            <div class="card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="150">
+              <img src="img/1.jpg" class="card-img-top" alt="Image 2"  />
               <div class="card-body">
                 <p class="card-text" style="text-align: center"><b>Profile</b></p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/2.jpg" class="card-img-top" alt="Image 3" />
+            <div class="card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="250">
+              <img src="img/2.jpeg" class="card-img-top" alt="Image 3"  />
               <div class="card-body">
-                <p class="card-text" style="text-align: center"><b>Bedugul</b></p>
+                <p class="card-text" style="text-align: center"><b>Admin</b></p>
               </div>
             </div>
             </div>
@@ -127,6 +130,8 @@
       </svg>
     </section>
     <!-- Akhir Image -->
+
+
 
     <!-- Contact -->
     <!-- <section id="contact">
@@ -161,11 +166,31 @@
     <!-- Akhir Contact -->
 
     <!-- Footer -->
-    <footer class="bg-primary text-white text-center pb-5">
-      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://www.instagram.com/revaardhana_" class="text-white fw-bold">Reva Ardhana</a></p>
+    <footer class=" text-center pb-5">
+      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://www.instagram.com/revaardhana_" class="text-dark fw-bold">Reva Ardhana</a></p>
     </footer>
     <!-- Akhir Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once : false,
+      });
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to('.lead', {duration: 2, delay: 1.5, text: 'Admin | Web Developer'})
+      gsap.from('.jumbotron img', {duration: 1, rotateY: 360, opacity:0});
+      gsap.from('.navbar', {duration: 1.5, y: '-100%', opacity:0, ease: 'bounce'});
+      gsap.from('.display-5', {duration: 1, x: -50, opacity:0, delay: 0.5, ease: 'back'});
+    </script>
+
   </body>
 </html>
