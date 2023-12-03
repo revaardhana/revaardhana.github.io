@@ -337,10 +337,14 @@
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+                <strong>Terima Kasih!</strong> Pesan anda sudah saya terima.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form action="forms/form.js" name="contact-form" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
+                    <input type="text" name="nama" class="form-control" id="name" placeholder="Your Name" required />
                   </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
@@ -350,14 +354,20 @@
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
                 </div>
                 <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="pesan" rows="5" placeholder="Message" required></textarea>
                 </div>
                 <div class="my-3">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center"><button type="submit" class="btn-kirim">Send Message</button></div>
+                <div class="text-center">
+                  <button class="btn d-none btn-loading" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status">Loading...</span>
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -393,7 +403,7 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/typed.js/typed.umd.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="forms/form.js"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
