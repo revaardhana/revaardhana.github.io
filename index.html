@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -49,6 +49,10 @@
           </li>
           <li>
             <a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
+          </li>
+          <li>
+            <button class="nav-link scrollto btn-gelap" type="button" data-bs-theme-value="dark"><i class="bx bx-moon theme-icon-active" data-theme-icon-active="bx-moon"></i> <span>Dark</span></button>
+            <button class="nav-link scrollto d-none btn-terang" type="button" data-bs-theme-value="light"><i class="bx bx-sun theme-icon-active" data-theme-icon-active="bx-sun"></i> <span>Light</span></button>
           </li>
         </ul>
       </nav>
@@ -239,7 +243,7 @@
                 <h4>Admin Operasional</h4>
                 <h5>2023 - Present</h5>
                 <p>Cottonello, Denpasar</p>
-                <p><em>Cottonello merupakan startup yang bergerak di bidang Brand Fashion</em></p>
+                <p><em>Cottonello merupakan starup yang bergerak di bidang Brand Fashion</em></p>
                 <ul>
                   <li>Pencatatan dan pengawasan stok.</li>
                   <li>Pendataan penjualan.</li>
@@ -393,6 +397,104 @@
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const btnTerang = document.querySelector(".btn-terang");
+      const btnGelap = document.querySelector(".btn-gelap");
+      btnTerang.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        btnTerang.classList.toggle("d-none");
+        btnGelap.classList.toggle("d-none");
+      });
+
+      btnGelap.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        btnTerang.classList.toggle("d-none");
+        btnGelap.classList.toggle("d-none");
+      });
+      /*!
+       * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+       * Copyright 2011-2023 The Bootstrap Authors
+       * Licensed under the Creative Commons Attribution 3.0 Unported License.
+       */
+
+      (() => {
+        "use strict";
+
+        const getStoredTheme = () => localStorage.getItem("theme");
+        const setStoredTheme = (theme) => localStorage.setItem("theme", theme);
+
+        const getPreferredTheme = () => {
+          const storedTheme = getStoredTheme();
+          if (storedTheme) {
+            return storedTheme;
+          }
+
+          return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        };
+
+        const setTheme = (theme) => {
+          if (theme === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.setAttribute("data-bs-theme", "dark");
+          } else {
+            document.documentElement.setAttribute("data-bs-theme", theme);
+          }
+        };
+
+        setTheme(getPreferredTheme());
+
+        const showActiveTheme = (theme, focus = false) => {
+          const themeSwitcher = document.querySelector("#bd-theme");
+
+          if (!themeSwitcher) {
+            return;
+          }
+
+          const themeSwitcherText = document.querySelector("#bd-theme-text");
+          const activeThemeIcon = document.querySelector(".theme-icon-active");
+          const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`);
+          const iconOfActiveBtn = btnToActive.querySelector("i").dataset.themeIcon;
+
+          document.querySelectorAll("[data-bs-theme-value]").forEach((element) => {
+            element.classList.remove("active");
+            element.setAttribute("aria-pressed", "false");
+          });
+
+          btnToActive.classList.add("active");
+          btnToActive.setAttribute("aria-pressed", "true");
+          activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive);
+          activeThemeIcon.classList.add(iconOfActiveBtn);
+          activeThemeIcon.dataset.iconActive = iconOfActiveBtn;
+          const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
+          themeSwitcher.setAttribute("aria-label", themeSwitcherLabel);
+
+          if (focus) {
+            themeSwitcher.focus();
+          }
+        };
+
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+          const storedTheme = getStoredTheme();
+          if (storedTheme !== "light" && storedTheme !== "dark") {
+            setTheme(getPreferredTheme());
+          }
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+          showActiveTheme(getPreferredTheme());
+
+          document.querySelectorAll("[data-bs-theme-value]").forEach((toggle) => {
+            toggle.addEventListener("click", () => {
+              const theme = toggle.getAttribute("data-bs-theme-value");
+              setStoredTheme(theme);
+              setTheme(theme);
+              showActiveTheme(theme, true);
+            });
+          });
+        });
+      })();
+    </script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
